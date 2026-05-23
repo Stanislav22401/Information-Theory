@@ -1,0 +1,162 @@
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --surface-2: #f0f2f5;
+  --border: #d0d5dd;
+  --text: #1a1d21;
+  --muted: #5c6570;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --radius: 10px;
+  --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* ——— Навигация лабораторных ——— */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+  padding: 0.85rem 1.5rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.site-nav__home {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.site-nav__home:hover {
+  color: var(--accent-hover);
+}
+
+.site-nav__title {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.site-nav__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-left: auto;
+}
+
+.site-nav__links a {
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  color: var(--muted);
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+
+.site-nav__links a:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+
+.site-nav__links a.is-active {
+  color: var(--accent);
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  font-weight: 600;
+}
+
+/* ——— Главная страница ——— */
+.home {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.home h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.home__meta {
+  margin: 0 0 2rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.lab-grid {
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.lab-card {
+  display: block;
+  padding: 1.25rem 1.35rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.lab-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
+}
+
+.lab-card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.1rem;
+  color: var(--accent);
+}
+
+.lab-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.lab-card--soon {
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+/* ——— Заглушка лабораторной ——— */
+.lab-stub {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.lab-stub h1 {
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+}
+
+.lab-stub p {
+  margin: 0;
+  color: var(--muted);
+}
