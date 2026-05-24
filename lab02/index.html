@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Лабораторная 2</title>
+  <title>Лабораторная 2 — Вариант 7</title>
   <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <nav class="site-nav" aria-label="Навигация">
@@ -18,9 +19,65 @@
     </div>
   </nav>
 
-  <div class="lab-stub">
-    <h1>Лабораторная 2</h1>
-    <p>Страница в разработке.</p>
-  </div>
+  <main>
+    <section class="panel settings">
+      <h2>Параметры</h2>
+      <p class="hint variant-info">
+        Вариант <span id="variant-label">7</span> · регистр <span id="register-len">29</span> бит ·
+        f(x) = <span id="poly-label">x^29 + x^27 + 1</span>
+      </p>
+      <div class="grid">
+        <label>
+          Режим
+          <select id="mode">
+            <option value="encrypt">Шифрование</option>
+            <option value="decrypt">Дешифрование</option>
+          </select>
+        </label>
+        <label>
+          Начальное состояние регистра
+          <input type="text" id="register-state" inputmode="numeric" autocomplete="off"
+                 placeholder="29 бит, только 0 и 1" spellcheck="false">
+          <span id="state-len" class="state-len">0 / 29</span>
+        </label>
+      </div>
+      <p class="hint">В поле состояния учитываются только 0 и 1. Нужно ровно 29 бит, состояние не может быть нулевым.</p>
+    </section>
+
+    <section class="panel io">
+      <h2>Файл</h2>
+      <div class="actions">
+        <label class="file-btn">
+          Выбрать файл
+          <input type="file" id="file-input">
+        </label>
+        <button type="button" id="btn-process" class="primary">Выполнить</button>
+      </div>
+      <p id="file-name" class="file-name">Файл не выбран</p>
+      <div class="actions">
+        <button type="button" id="btn-download" disabled>Сохранить результат</button>
+      </div>
+      <p id="status" class="status" role="status"></p>
+    </section>
+
+    <section class="panel preview">
+      <h2>Двоичное представление</h2>
+      <label>
+        Ключевая последовательность (гамма)
+        <textarea id="key-output" rows="4" readonly placeholder="После обработки…"></textarea>
+      </label>
+      <label>
+        Исходный файл
+        <textarea id="input-binary" rows="4" readonly placeholder="После обработки…"></textarea>
+      </label>
+      <label>
+        Результат (зашифрованный / расшифрованный)
+        <textarea id="output-binary" rows="4" readonly placeholder="После обработки…"></textarea>
+      </label>
+      <p class="hint">Для больших файлов на экран выводится начало (первые 128 байт). Полный файл сохраняется при скачивании.</p>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>
