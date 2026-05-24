@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Лабораторная 3</title>
+  <title>Лабораторная 3 — RSA</title>
   <link rel="stylesheet" href="../css/site.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <nav class="site-nav" aria-label="Навигация">
@@ -18,9 +19,91 @@
     </div>
   </nav>
 
-  <div class="lab-stub">
-    <h1>Лабораторная 3</h1>
-    <p>Страница в разработке.</p>
-  </div>
+  <main>
+    <div class="tabs" role="tablist">
+      <button type="button" class="tab is-active" data-tab="encrypt" role="tab" aria-selected="true">Шифрование</button>
+      <button type="button" class="tab" data-tab="decrypt" role="tab" aria-selected="false">Дешифрование</button>
+    </div>
+
+    <section id="panel-encrypt" class="panel tab-panel">
+      <h2>Шифрование RSA</h2>
+      <p class="hint">Задайте простые p, q и закрытый ключ KС (d). Открытый ключ KO (e) вычисляется расширенным алгоритмом Евклида.</p>
+
+      <div class="grid grid-3">
+        <label>
+          p (простое)
+          <input type="text" id="enc-p" inputmode="numeric" autocomplete="off" placeholder="например 131">
+        </label>
+        <label>
+          q (простое)
+          <input type="text" id="enc-q" inputmode="numeric" autocomplete="off" placeholder="например 227">
+        </label>
+        <label>
+          KС (d)
+          <input type="text" id="enc-kc" inputmode="numeric" autocomplete="off" placeholder="например 3">
+        </label>
+      </div>
+
+      <div class="key-info" id="enc-key-info">KO (e): — · r = p·q: — · φ(r): —</div>
+
+      <div class="grid">
+        <label>
+          Имя входного файла
+          <input type="text" id="enc-filename" placeholder="укажите имя или выберите файл ниже" autocomplete="off">
+        </label>
+        <label class="file-label">
+          Файл
+          <span class="file-row">
+            <label class="file-btn">
+              Выбрать файл
+              <input type="file" id="enc-file-input">
+            </label>
+            <span id="enc-file-meta" class="file-meta">не выбран</span>
+          </span>
+        </label>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="btn-enc-calc" class="secondary">Вычислить KO</button>
+        <button type="button" id="btn-enc-run" class="primary">Зашифровать</button>
+        <button type="button" id="btn-enc-download" disabled>Сохранить зашифрованный файл</button>
+      </div>
+      <p id="enc-status" class="status" role="status"></p>
+
+      <label class="preview-label">
+        Зашифрованный файл (десятичные значения 16-битных блоков)
+        <textarea id="enc-decimal" rows="6" readonly placeholder="После шифрования…"></textarea>
+      </label>
+    </section>
+
+    <section id="panel-decrypt" class="panel tab-panel hidden">
+      <h2>Дешифрование RSA</h2>
+      <p class="hint">Файл из 16-битных блоков (по 2 байта на исходный байт). Возведение в степень — быстрым алгоритмом.</p>
+
+      <div class="grid">
+        <label>
+          r (модуль N = p·q)
+          <input type="text" id="dec-r" inputmode="numeric" autocomplete="off" placeholder="например 29737">
+        </label>
+        <label>
+          KС (d)
+          <input type="text" id="dec-kc" inputmode="numeric" autocomplete="off" placeholder="например 3">
+        </label>
+      </div>
+
+      <div class="actions">
+        <label class="file-btn">
+          Выбрать зашифрованный файл
+          <input type="file" id="dec-file-input">
+        </label>
+        <button type="button" id="btn-dec-run" class="primary">Расшифровать</button>
+        <button type="button" id="btn-dec-download" disabled>Сохранить расшифрованный файл</button>
+      </div>
+      <p id="dec-file-meta" class="file-meta">Файл не выбран</p>
+      <p id="dec-status" class="status" role="status"></p>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>
